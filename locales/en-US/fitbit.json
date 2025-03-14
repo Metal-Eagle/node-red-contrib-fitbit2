@@ -15,6 +15,7 @@
             "log-body-fat": "Log Body Fat",
             "log-activity": "Log activity",
             "log-food": "Log food",
+            "log-water": "Log Water",
             "delete-activity": "Delete activity",
             "delete-food": "Delete log food"
         },
@@ -35,6 +36,8 @@
             "activityid": "Activity Id",
             "activitylogid": "Activity Log Id",
             "unitId": "Unit ID",
+            "unit": "Unit",
+            "amount": "amount",
             "mealType": "Meal Type",
             "foodId": "Food ID",
             "manualCalories": "Calories",
