@@ -25,6 +25,10 @@ function checkValidPeriod(data) {
   if (!['1d', '7d', '1w', '1m', '3m', '6m', '1y'].includes(data.period)) throw new Error("Invalid period. Use 1d, 7d, 1w, 1m, 3m, 6m, or 1y");
 }
 
+function checkValidUnit(data) {
+  if (!['ml', 'cup', 'fl oz'].includes(data.unit)) throw new Error("Invalid Unit. Use ml, cup, or fl oz");
+}
+
 function checkSort(data) {
   if (!['asc', 'desc'].includes(data.sort)) throw new Error("Sort must be asc or desc.");
 }
@@ -317,6 +321,7 @@ class UrlFactory {
 
   static logWater(data) {
     checkData(data);
+    checkValidUnit(data)
 
     if (!data.amount) {
       throw new Error("Amount is required.");

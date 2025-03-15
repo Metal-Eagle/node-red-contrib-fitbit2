@@ -57,15 +57,16 @@
       unitIdType: {},
       foodId: {},
       foodIdType: {},
-      date: {},
-      amount: {},
-      unit: {},
       mealTypeId: {},
       mealTypeIdType: {},
       weight: {},
       weightType: {},
       bodyFat: {},
       bodyFatType: {},
+      amount: {},
+      amountType: {},
+      unit: {},
+      unitType: {},
     },
     inputs: 1,
     outputs: 1,
@@ -124,11 +125,11 @@
       typeInput("distance");
       typeInput("unitId");
       typeInput("foodId");
-      typeInput("unit");
-      typeInput("amount");
       typeInput("mealTypeId");
       typeInput("weight");
       typeInput("bodyFat");
+      typeInput("unit");
+      typeInput("amount");
     },
   });
 </script>
@@ -261,16 +262,6 @@
           <input type="hidden" id="node-input-foodIdType">
       </div>
       <div class="form-row">
-          <label for="node-input-amount"><i class="fa fa-edit"></i> <span data-i18n="fitbit.label.amount"></span></label>
-          <input type="text" id="node-input-amount" style="width:275px;">
-          <input type="hidden" id="node-input-amount">
-      </div>
-            <div class="form-row">
-          <label for="node-input-unit"><i class="fa fa-edit"></i> <span data-i18n="fitbit.label.unit"></span></label>
-          <input type="text" id="node-input-unit" style="width:275px;">
-          <input type="hidden" id="node-input-unit">
-      </div>
-      <div class="form-row">
           <label for="node-input-mealTypeId"><i class="fa fa-edit"></i> <span data-i18n="fitbit.label.mealType"></span></label>
           <input type="text" id="node-input-mealTypeId" style="width:275px;">
           <input type="hidden" id="node-input-mealTypeIdType">
@@ -284,6 +275,16 @@
           <label for="node-input-bodyFat"><i class="fa fa-edit"></i> <span data-i18n="fitbit.label.bodyFat"></span></label>
           <input type="text" id="node-input-bodyFat" style="width:275px;">
           <input type="hidden" id="node-input-bodyFatType">
+      </div>
+      <div class="form-row">
+          <label for="node-input-amount"><i class="fa fa-edit"></i> <span data-i18n="fitbit.label.amount"></span></label>
+          <input type="text" id="node-input-amount" style="width:275px;">
+          <input type="hidden" id="node-input-amountType">
+      </div>
+            <div class="form-row">
+          <label for="node-input-unit"><i class="fa fa-edit"></i> <span data-i18n="fitbit.label.unit"></span></label>
+          <input type="text" id="node-input-unit" style="width:275px;">
+          <input type="hidden" id="node-input-unitType">
       </div>
   </div>
   <div class="form-row">
