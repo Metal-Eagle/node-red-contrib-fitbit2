@@ -2,7 +2,7 @@
   "name": "node-red-contrib-fitbit2",
   "version": "0.3.0",
   "description": "Adds Fitbit API nodes to Node-RED",
-  "homepage": "https://github.com/borpin/node-red-contrib-fitbit2#readme",
+  "homepage": "https://github.com/Metal-Eagle/node-red-contrib-fitbit2#readme",
   "license": "ISC",
   "keywords": [
     "node-red",
@@ -12,9 +12,9 @@
   ],
   "main": "index.js",
   "deprecated": false,
-  "author": "borpin",
+  "author": "Metal-Eagle",
   "bugs": {
-    "url": "https://github.com/borpin/node-red-contrib-fitbit2/issues"
+    "url": "https://github.com/Metal-Eagle/node-red-contrib-fitbit2/issues"
   },
   "bundleDependencies": false,
   "dependencies": {
@@ -30,6 +30,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/borpin/node-red-contrib-fitbit2.git"
+    "url": "git+https://github.com/Metal-Eagle/node-red-contrib-fitbit2.git"
   }
 }
