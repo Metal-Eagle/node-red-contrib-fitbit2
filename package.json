@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-fitbit2",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Adds Fitbit API nodes to Node-RED",
   "homepage": "https://github.com/borpin/node-red-contrib-fitbit2#readme",
   "license": "ISC",
