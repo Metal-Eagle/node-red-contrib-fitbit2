@@ -25,6 +25,10 @@ function checkValidPeriod(data) {
   if (!['1d', '7d', '1w', '1m', '3m', '6m', '1y'].includes(data.period)) throw new Error("Invalid period. Use 1d, 7d, 1w, 1m, 3m, 6m, or 1y");
 }
 
+function checkValidUnit(data) {
+  if (!['ml', 'cup', 'fl oz'].includes(data.unit)) throw new Error("Invalid Unit. Use ml, cup, or fl oz");
+}
+
 function checkSort(data) {
   if (!['asc', 'desc'].includes(data.sort)) throw new Error("Sort must be asc or desc.");
 }
@@ -85,7 +89,7 @@ class UrlFactory {
     // If period defined, just use end date.
 
     if (data.period) {
-      if (['1d', '7d', '30d', '1w', '1m', '3m', '6m', '1y'].includes(data.period)){
+      if (['1d', '7d', '30d', '1w', '1m', '3m', '6m', '1y'].includes(data.period)) {
         return fitbitUrlCurrentUser("activities", data.activitiesSeriesPath, "date", formattedEndDate, data.period);
       } else {
         throw new Error("Period:" + data.period + "  Invalid period. Use 1d, 7d, 30d, 1w, 1m, 3m, 6m or 1y");
@@ -104,7 +108,7 @@ class UrlFactory {
       throw new Error("Resource of bmi, fat, or weight is required");
     } else if (!['bmi', 'fat', 'weight'].includes(data.bodySeriesPath)) {
       throw new Error("Resource of bmi, fat, or weight is required");
-    } 
+    }
 
     if (!data.endDate) {
       throw new Error("End date is required.");
@@ -115,7 +119,7 @@ class UrlFactory {
     // If period defined, just use end date.
 
     if (data.period) {
-      if (['1d', '7d', '30d', '1w', '1m', '3m', '6m', '1y', 'max'].includes(data.period)){
+      if (['1d', '7d', '30d', '1w', '1m', '3m', '6m', '1y', 'max'].includes(data.period)) {
         return fitbitUrlCurrentUser("body", data.bodySeriesPath, "date", formattedEndDate, data.period);
       } else {
         throw new Error("Period:" + data.period + "  Invalid period. Use 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y, or max");
@@ -311,6 +315,31 @@ class UrlFactory {
     urlObj.searchParams.append("date", formatDate(data.startDate));
     urlObj.searchParams.append("mealTypeId", data.mealTypeId);
     urlObj.searchParams.append("unitId", data.unitId);
+
+    return urlObj.href;
+  }
+
+  static logWater(data) {
+    checkData(data);
+    checkValidUnit(data)
+
+    if (!data.amount) {
+      throw new Error("Amount is required.");
+    }
+
+    if (!data.date) {
+      throw new Error("Date is required.");
+    }
+
+    if (!data.unit) {
+      throw new Error("Unit is required.");
+    }
+
+    const urlObj = new URL(fitbitUrlCurrentUser("foods/log/water"));
+
+    urlObj.searchParams.append("amount", data.amount);
+    urlObj.searchParams.append("date", formatDate(data.date));
+    urlObj.searchParams.append("unit", data.unit);
 
     return urlObj.href;
   }

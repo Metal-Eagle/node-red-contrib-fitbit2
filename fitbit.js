@@ -19,7 +19,7 @@ function parseFitbitData(data) {
     }
 
     if (result_json.hasOwnProperty("errors"))
-        throw "Fitbit API error: " + result_json.errors.map(e=>e.message).join(", ");
+        throw "Fitbit API error: " + result_json.errors.map(e => e.message).join(", ");
 
     return result_json;
 }
@@ -45,8 +45,8 @@ function typedDataFactory(RED, config, node) {
             case 'num':
                 return Number(config[key]);
             case 'jsonata':
-                var expr = RED.util.prepareJSONataExpression(config[key],node);
-                return RED.util.evaluateJSONataExpression(expr,msg);
+                var expr = RED.util.prepareJSONataExpression(config[key], node);
+                return RED.util.evaluateJSONataExpression(expr, msg);
             case 'env':
                 return node.context().env.get(config[key]);
             default:
@@ -137,6 +137,12 @@ module.exports = function (RED) {
             method: "POST",
             func: UrlFactory.logFood
         },
+        "log-water": {
+            display: RED._("fitbit.resources.log-water"),
+            inputs: ["date", "amount", "unit"],
+            method: "POST",
+            func: UrlFactory.logWater
+        },
         "delete-activity": {
             display: RED._("fitbit.resources.delete-activity"),
             inputs: ["activityLogId"],
@@ -148,12 +154,12 @@ module.exports = function (RED) {
     function fitbitInNode(config) {
         RED.nodes.createNode(this, config);
         const node = this;
-        
+
         const getTypedData = typedDataFactory(RED, config, node);
 
         const errorReport = function (errorText, msg) {
             node.error(errorText, msg);
-            node.status({text: errorText , fill: "red"});
+            node.status({ text: errorText, fill: "red" });
             node.send(null);
         };
 
@@ -202,7 +208,7 @@ module.exports = function (RED) {
                         errorReport(err, msg);
                         return;
                     }
-                    node.status({text: "Status: " + msg.raw.statusCode , fill: "green"});
+                    node.status({ text: "Status: " + msg.raw.statusCode, fill: "green" });
                     node.send(msg);
                 })
             } catch (err) {
